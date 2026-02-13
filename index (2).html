@@ -1,0 +1,2135 @@
+<html lang="zh-CN"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中仙村0~6岁儿童、孕产妇健康管理 - 图片上传多人协作系统</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f5ff;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c80c5;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            color: #2c80c5;
+            margin: 0 0 15px 0;
+            font-size: 26px;
+        }
+        
+        .header p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 用户状态区域 */
+        .user-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f8fbff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #dbe7ff;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2c80c5;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            color: #2c80c5;
+        }
+        
+        .online-users {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .online-user {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #e8f2ff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .user-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: inline-block;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background-color: #f1f8ff;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        
+        .tab-button {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 5px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 15px;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab-button:hover {
+            background-color: #d4e7ff;
+        }
+        
+        .tab-button.active {
+            background-color: #2c80c5;
+            color: white;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2c80c5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .btn:hover {
+            background-color: #1a6cb3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #4CAF50;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #3d8b40;
+        }
+        
+        .btn-warning {
+            background-color: #ff9800;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e68900;
+        }
+        
+        .btn-danger {
+            background-color: #f44336;
+        }
+        
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+        
+        .btn-success {
+            background-color: #8BC34A;
+        }
+        
+        .btn-success:hover {
+            background-color: #7CB342;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 14px;
+            margin: 0 2px;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fdfdfd;
+        }
+        
+        .collaborative-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            min-width: 1000px;
+        }
+        
+        .collaborative-table th, .collaborative-table td {
+            border: 1px solid #c1d7ff;
+            padding: 12px 10px;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s;
+            position: relative;
+            min-height: 60px;
+            vertical-align: top;
+        }
+        
+        .collaborative-table th {
+            background-color: #e3eeff;
+            font-weight: bold;
+            color: #2c80c5;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .collaborative-table td {
+            background-color: white;
+        }
+        
+        .collaborative-table td.editable {
+            cursor: text;
+        }
+        
+        .collaborative-table td.editable:focus {
+            background-color: #fffde7;
+            outline: 2px solid #ffd54f;
+            outline-offset: -1px;
+            z-index: 5;
+        }
+        
+        .collaborative-table td.editing {
+            background-color: #e8f5e9;
+            box-shadow: 0 0 0 2px #4CAF50;
+        }
+        
+        .collaborative-table td.locked {
+            background-color: #ffebee;
+            cursor: not-allowed;
+        }
+        
+        .collaborative-table tr:hover td:not(.locked) {
+            background-color: #f5f9ff;
+        }
+        
+        .editor-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            z-index: 20;
+            max-width: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        /* 图片相关样式 */
+        .cell-content {
+            min-height: 40px;
+            word-break: break-word;
+        }
+        
+        .cell-image {
+            max-width: 100%;
+            max-height: 150px;
+            margin: 5px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .cell-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .image-remove {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+            z-index: 30;
+        }
+        
+        .image-container:hover .image-remove {
+            display: block;
+        }
+        
+        .image-upload-btn {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(44, 128, 197, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            z-index: 25;
+            text-align: center;
+            line-height: 28px;
+        }
+        
+        .collaborative-table td.editing .image-upload-btn {
+            display: block;
+        }
+        
+        .table-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0 20px 0;
+            color: #2c80c5;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0edff;
+        }
+        
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .row-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .notes {
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-left: 5px solid #2c80c5;
+            margin-top: 40px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        
+        .notes h3 {
+            margin-top: 0;
+            color: #2c80c5;
+            margin-bottom: 15px;
+        }
+        
+        .notes ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .notes li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .mobile-warning {
+            display: none;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .edit-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+            background-color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-weight: bold;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-content h2 {
+            color: #2c80c5;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: #2c80c5;
+        }
+        
+        .share-qrcode {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .share-qrcode img {
+            max-width: 200px;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: white;
+        }
+        
+        .share-links {
+            margin-top: 20px;
+        }
+        
+        .share-link-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+        }
+        
+        .share-link-item input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .share-link-item button {
+            padding: 8px 15px;
+            white-space: nowrap;
+        }
+        
+        .upload-progress {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f1f8ff;
+            border-radius: 6px;
+            border: 1px solid #dbe7ff;
+        }
+        
+        .upload-progress.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        /* 图片查看器 */
+        .image-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-viewer.active {
+            display: flex;
+        }
+        
+        .image-viewer img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .image-viewer-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .user-panel {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+            
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .btn {
+                flex: 1;
+                min-width: 140px;
+                padding: 12px 10px;
+                font-size: 14px;
+            }
+            
+            .table-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .row-controls {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .collaborative-table th, .collaborative-table td {
+                padding: 10px 6px;
+                font-size: 13px;
+            }
+            
+            .mobile-warning {
+                display: block;
+            }
+            
+            .edit-icon {
+                width: 18px;
+                height: 18px;
+                margin-right: 5px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+            
+            .cell-image {
+                max-height: 100px;
+            }
+            
+            .image-upload-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 14px;
+                line-height: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tab-button {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+            
+            .btn {
+                min-width: 120px;
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+            
+            .collaborative-table th, .collaborative-table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+            
+            .editor-badge {
+                font-size: 8px;
+                padding: 1px 2px;
+                max-width: 40px;
+            }
+        }
+        
+        /* 打印样式 */
+        @media print {
+            .user-panel, .table-controls, .footer, .mobile-warning, .editor-badge, .image-upload-btn {
+                display: none !important;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .collaborative-table th, .collaborative-table td {
+                border-color: #000;
+            }
+            
+            .cell-image {
+                max-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 登录模态框 -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2>加入协作编辑</h2>
+            <p>请输入您的姓名加入在线编辑：</p>
+            <input type="text" id="userNameInput" class="modal-input" placeholder="请输入您的姓名" maxlength="20">
+            <button class="btn" id="joinButton" style="width:100%;">加入编辑</button>
+            <p style="text-align:center; margin-top:15px; font-size:14px; color:#666;">
+                注意：多人可以同时编辑同一表格，支持上传图片，可转发到微信群共同编辑。
+            </p>
+        </div>
+    </div>
+    
+    <!-- 分享模态框 -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <h2>分享到微信群</h2>
+            <p>将以下链接或二维码分享到微信群，邀请其他人一起编辑：</p>
+            
+            <div class="share-qrcode">
+                <canvas id="qrcodeCanvas" width="200" height="200"></canvas>
+            </div>
+            
+            <div class="share-links">
+                <div class="share-link-item">
+                    <input type="text" id="shareLink" readonly="" value="正在生成链接...">
+                    <button class="btn btn-small" id="copyLinkBtn">复制链接</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn btn-success" id="wechatShareBtn">分享到微信</button>
+                    <button class="btn" id="downloadHTMLBtn">下载完整HTML</button>
+                    <button class="btn btn-secondary" id="closeShareBtn">关闭</button>
+                </div>
+            </div>
+            
+            <p style="font-size:14px; color:#666; margin-top:20px;">
+                <strong>提示：</strong> 分享链接包含您的用户名，其他人点击链接会自动加入编辑。<br>
+                <strong>完整HTML：</strong> 下载的HTML文件包含所有功能，支持图片上传和粘贴，可在任何设备上独立使用。
+            </p>
+        </div>
+    </div>
+    
+    <!-- 图片查看器 -->
+    <div class="image-viewer" id="imageViewer">
+        <button class="image-viewer-close" id="closeImageViewer">×</button>
+        <img id="viewerImage" src="" alt="查看图片">
+    </div>
+    
+    <!-- 图片上传进度 -->
+    <div class="upload-progress" id="uploadProgress">
+        <div>正在上传图片...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div id="progressText">0%</div>
+    </div>
+    
+    <div class="mobile-warning">
+        <strong>提示：</strong> 在手机上编辑时，请横屏以获得更好的体验。点击表格单元格即可编辑内容，长按单元格可上传图片。
+    </div>
+    
+    <div class="container" id="mainContainer" style="display: block;">
+        <div class="header">
+            <h1>中仙村0~6岁儿童、孕产妇健康管理 - 图片上传多人协作系统</h1>
+            <p>支持图片上传、粘贴和微信群分享的多人协作编辑系统。可转发到微信群，多人同时编辑。</p>
+        </div>
+        
+        <div class="user-panel">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar" style="background-color: rgb(255, 152, 0);">池</div>
+                <div>
+                    <div class="user-name" id="userNameDisplay">池毓波</div>
+                    <div style="font-size:14px; color:#666;">在线状态: <span id="userStatus">在线</span></div>
+                </div>
+            </div>
+            
+            <div class="online-users">
+                <span style="color:#666; font-size:14px;">在线用户:</span>
+                <div id="onlineUsersList">
+                    <!-- 在线用户列表将通过JavaScript动态添加 -->
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-success" id="shareButton">
+                    <span class="edit-icon">📤</span>分享到微信
+                </button>
+                <button class="btn btn-warning" id="saveData">
+                    <span class="edit-icon">💾</span>保存数据
+                </button>
+                <button class="btn" id="downloadWord">
+                    <span class="edit-icon">📄</span>下载Word
+                </button>
+                <button class="btn" id="downloadHTML">
+                    <span class="edit-icon">💻</span>下载完整HTML
+                </button>
+                <button class="btn btn-danger" id="logoutButton">
+                    <span class="edit-icon">🚪</span>退出
+                </button>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-button" data-tab="child-health">儿童健康体检</button>
+            <button class="tab-button active" data-tab="maternal-health">孕产妇健康管理</button>
+            <button class="tab-button" data-tab="child-tcm">儿童中医药管理</button>
+        </div>
+        
+        <!-- 0~6岁儿童健康体检表格 -->
+        <div id="child-health" class="tab-content">
+            <div class="table-title">0~6岁儿童健康管理服务（健康体检）</div>
+            
+            <div class="table-controls">
+                <div>
+                    <button class="btn btn-small btn-secondary" id="addChildRow">
+                        <span class="edit-icon">+</span>添加新行
+                    </button>
+                    <button class="btn btn-small btn-danger" id="clearChildRows">
+                        <span class="edit-icon">×</span>清空白行
+                    </button>
+                </div>
+                <div class="row-controls">
+                    <span style="color:#666; font-size:14px;">点击单元格编辑，支持上传/粘贴图片，绿色标记显示当前编辑者</span>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="collaborative-table" id="childHealthTable">
+                    <colgroup>
+                        <col style="width: 11%">
+                        <col style="width: 9%">
+                        <col style="width: 9%">
+                        <col style="width: 10%">
+                        <col style="width: 7%">
+                        <col style="width: 7%">
+                        <col style="width: 9%">
+                        <col style="width: 8%">
+                        <col style="width: 8%">
+                        <col style="width: 8%">
+                        <col style="width: 8%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>管理对象</th>
+                            <th>服务项目</th>
+                            <th>第1次</th>
+                            <th>第2次</th>
+                            <th>第3次</th>
+                            <th>第4次</th>
+                            <th>第5次</th>
+                            <th>第6次</th>
+                            <th>第7次</th>
+                            <th>第8次</th>
+                            <th>第9次</th>
+                        </tr>
+                    </thead>
+                    <tbody id="childHealthBody"><tr><td class="editable" contenteditable="true" data-row="0" data-col="0"><div class="cell-content"><span>0~6岁儿童</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="1"><div class="cell-content"><span>健康体检</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="2"><div class="cell-content"><span>出院3~7天内</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="3"><div class="cell-content"><span>满月（28~30天）</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="4"><div class="cell-content"><span>3月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="5"><div class="cell-content"><span>6月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="6"><div class="cell-content"><span>8~9月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="7"><div class="cell-content"><span>12月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="8"><div class="cell-content"><span>18月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="9"><div class="cell-content"><span>24月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="10"><div class="cell-content"><span>36月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td></tr><tr><td class="editable" contenteditable="true" data-row="1" data-col="0"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="1"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="2"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="3"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="4"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="5"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="6"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="7"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="8"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="9"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="10"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 孕产妇健康管理表格 -->
+        <div id="maternal-health" class="tab-content active">
+            <div class="table-title">孕产妇健康管理服务</div>
+            
+            <div class="table-controls">
+                <div>
+                    <button class="btn btn-small btn-secondary" id="addMaternalRow">
+                        <span class="edit-icon">+</span>添加新行
+                    </button>
+                    <button class="btn btn-small btn-danger" id="clearMaternalRows">
+                        <span class="edit-icon">×</span>清空白行
+                    </button>
+                </div>
+                <div class="row-controls">
+                    <span style="color:#666; font-size:14px;">点击单元格编辑，支持上传/粘贴图片，绿色标记显示当前编辑者</span>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="collaborative-table" id="maternalHealthTable">
+                    <thead>
+                        <tr>
+                            <th>管理对象</th>
+                            <th>服务项目</th>
+                            <th>第1次</th>
+                            <th>第2次</th>
+                            <th>第3次</th>
+                            <th>第4次</th>
+                            <th>第5次</th>
+                            <th>第6次</th>
+                            <th>第7次</th>
+                            <th>第8次</th>
+                            <th>第9次</th>
+                        </tr>
+                    </thead>
+                    <tbody id="maternalHealthBody"><tr><td class="editable" contenteditable="true" data-row="0" data-col="0"><div class="cell-content"><span>孕产妇</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="1"><div class="cell-content"><span>健康管理</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="2"><div class="cell-content"><span>孕13周前</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="3"><div class="cell-content"><span>孕16-24周</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="4"><div class="cell-content"><span>孕24-28周</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="5"><div class="cell-content"><span>孕28-32周</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="6"><div class="cell-content"><span>孕32-36周</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="7"><div class="cell-content"><span>孕37-40周</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="8"><div class="cell-content"><span>产后7天内</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="9"><div class="cell-content"><span>产后28天</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="10"><div class="cell-content"><span>产后42天</span></div><button class="image-upload-btn" title="上传图片">📷</button></td></tr><tr><td class="editable" contenteditable="true" data-row="1" data-col="0"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="1"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="2"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="3"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="4"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="5"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="6"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="7"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="8"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="9"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="1" data-col="10"><div class="cell-content"></div><button class="image-upload-btn" title="上传图片">📷</button></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 0~6岁儿童中医药健康管理表格 -->
+        <div id="child-tcm" class="tab-content">
+            <div class="table-title">0~6岁儿童健康管理服务（中医药健康管理）</div>
+            
+            <div class="table-controls">
+                <div>
+                    <button class="btn btn-small btn-secondary" id="addTcmRow">
+                        <span class="edit-icon">+</span>添加新行
+                    </button>
+                    <button class="btn btn-small btn-danger" id="clearTcmRows">
+                        <span class="edit-icon">×</span>清空白行
+                    </button>
+                </div>
+                <div class="row-controls">
+                    <span style="color:#666; font-size:14px;">点击单元格编辑，支持上传/粘贴图片，绿色标记显示当前编辑者</span>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="collaborative-table" id="childTcmTable">
+                    <thead>
+                        <tr>
+                            <th>管理对象</th>
+                            <th>服务项目</th>
+                            <th>第1次</th>
+                            <th>第2次</th>
+                            <th>第3次</th>
+                            <th>第4次</th>
+                            <th>第5次</th>
+                            <th>第6次</th>
+                            <th>第7次</th>
+                            <th>第8次</th>
+                            <th>第9次</th>
+                        </tr>
+                    </thead>
+                    <tbody id="childTcmBody"><tr><td class="editable" contenteditable="true" data-row="0" data-col="0"><div class="cell-content"><span>0~6岁儿童</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="1"><div class="cell-content"><span>中医药健康管理</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="2"><div class="cell-content"><span>6月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="3"><div class="cell-content"><span>12月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="4"><div class="cell-content"><span>18月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="5"><div class="cell-content"><span>24月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="6"><div class="cell-content"><span>30月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="7"><div class="cell-content"><span>36月龄</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="8"><div class="cell-content"><span>---</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="9"><div class="cell-content"><span>---</span></div><button class="image-upload-btn" title="上传图片">📷</button></td><td class="editable" contenteditable="true" data-row="0" data-col="10"><div class="cell-content"><span>---</span></div><button class="image-upload-btn" title="上传图片">📷</button></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="notes">
+            <h3>备注说明：</h3>
+            <ul>
+                <li>本表格适用于0~6岁儿童及孕产妇健康管理服务时间安排参考。</li>
+                <li>儿童健康体检共9次，从出生1周内至36月龄；中医药健康管理共6次，从6月龄至36月龄。</li>
+                <li>孕产妇健康管理共9次，从孕13周前至产后42天。</li>
+                <li>"---"表示该时间段无相应服务项目。</li>
+                <li><strong>图片上传功能：</strong>点击单元格后，点击右下角图片按钮上传本地图片，或直接粘贴截图到单元格中。</li>
+                <li><strong>微信群分享：</strong>点击"分享到微信"按钮，复制链接或扫描二维码分享到微信群，邀请多人共同编辑。</li>
+                <li><strong>实时协作：</strong>多个用户可以同时编辑表格，当前编辑的单元格会被锁定，防止编辑冲突。</li>
+                <li><strong>完整HTML下载：</strong>点击"下载完整HTML"按钮，下载包含所有功能的独立HTML文件，可在任何设备上使用。</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>中仙村公卫群 | 图片上传多人协作系统 | 技术支持：Firebase &amp; 本地存储</p>
+            <p>当前在线人数：<span id="onlineCount">0</span> 人 | 最后同步时间：<span id="lastSyncTime">21:16:06</span></p>
+        </div>
+    </div>
+
+    <!-- 隐藏的文件上传输入 -->
+    <input type="file" id="imageUploadInput" accept="image/*" style="display:none;">
+    
+    <!-- JavaScript代码 -->
+    <script>
+        // 全局变量
+        let currentUser = null;
+        let userId = null;
+        let userName = null;
+        let cellLocks = {};
+        let onlineUsers = {};
+        let currentTable = 'child-health';
+        let currentEditingCell = null;
+        let isOnlineMode = true;
+        let localImages = new Map();
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 显示登录模态框
+            document.getElementById('loginModal').classList.add('active');
+            
+            // 尝试从URL获取用户名
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlUserName = urlParams.get('user');
+            if (urlUserName) {
+                document.getElementById('userNameInput').value = decodeURIComponent(urlUserName);
+            }
+            
+            // 检查是否是离线模式
+            if (urlParams.get('mode') === 'offline') {
+                isOnlineMode = false;
+                showMessage('离线模式：所有数据保存在本地', 'info');
+            }
+            
+            // 初始化表格数据
+            initializeTableData();
+            
+            // 设置事件监听器
+            setupEventListeners();
+            
+            // 加载本地存储的图片
+            loadLocalImages();
+        });
+        
+        // 初始化表格数据
+        function initializeTableData() {
+            // 儿童健康体检表格初始数据
+            const childHealthInitialData = [
+                ['0~6岁儿童', '健康体检', '出院3~7天内', '满月（28~30天）', '3月龄', '6月龄', '8~9月龄', '12月龄', '18月龄', '24月龄', '36月龄'],
+                ['', '', '', '', '', '', '', '', '', '', '']
+            ];
+            
+            // 孕产妇健康管理表格初始数据
+            const maternalHealthInitialData = [
+                ['孕产妇', '健康管理', '孕13周前', '孕16-24周', '孕24-28周', '孕28-32周', '孕32-36周', '孕37-40周', '产后7天内', '产后28天', '产后42天'],
+                ['', '', '', '', '', '', '', '', '', '', '']
+            ];
+            
+            // 儿童中医药管理表格初始数据
+            const childTcmInitialData = [
+                ['0~6岁儿童', '中医药健康管理', '6月龄', '12月龄', '18月龄', '24月龄', '30月龄', '36月龄', '---', '---', '---']
+            ];
+            
+            // 填充表格
+            fillTable('childHealthBody', childHealthInitialData);
+            fillTable('maternalHealthBody', maternalHealthInitialData);
+            fillTable('childTcmBody', childTcmInitialData);
+            
+            // 设置可编辑单元格事件
+            setupEditableCells();
+        }
+        
+        // 填充表格数据
+        function fillTable(tableBodyId, data) {
+            const tbody = document.getElementById(tableBodyId);
+            tbody.innerHTML = '';
+            
+            data.forEach((rowData, rowIndex) => {
+                const row = document.createElement('tr');
+                
+                rowData.forEach((cellData, colIndex) => {
+                    const cell = document.createElement('td');
+                    cell.className = 'editable';
+                    cell.setAttribute('contenteditable', 'true');
+                    cell.setAttribute('data-row', rowIndex);
+                    cell.setAttribute('data-col', colIndex);
+                    
+                    // 创建单元格内容容器
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'cell-content';
+                    
+                    // 如果有初始数据，添加到单元格
+                    if (cellData) {
+                        const textSpan = document.createElement('span');
+                        textSpan.textContent = cellData;
+                        contentDiv.appendChild(textSpan);
+                    }
+                    
+                    cell.appendChild(contentDiv);
+                    
+                    // 添加图片上传按钮
+                    const uploadBtn = document.createElement('button');
+                    uploadBtn.className = 'image-upload-btn';
+                    uploadBtn.innerHTML = '📷';
+                    uploadBtn.title = '上传图片';
+                    uploadBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        openImageUpload(cell);
+                    });
+                    cell.appendChild(uploadBtn);
+                    
+                    row.appendChild(cell);
+                });
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 加入按钮事件
+            document.getElementById('joinButton').addEventListener('click', joinCollaboration);
+            
+            // 用户名输入框回车事件
+            document.getElementById('userNameInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    joinCollaboration();
+                }
+            });
+            
+            // 分享按钮事件
+            document.getElementById('shareButton').addEventListener('click', openShareModal);
+            
+            // 关闭分享模态框按钮
+            document.getElementById('closeShareBtn').addEventListener('click', function() {
+                document.getElementById('shareModal').classList.remove('active');
+            });
+            
+            // 复制链接按钮
+            document.getElementById('copyLinkBtn').addEventListener('click', copyShareLink);
+            
+            // 微信分享按钮
+            document.getElementById('wechatShareBtn').addEventListener('click', shareToWechat);
+            
+            // 下载完整HTML按钮
+            document.getElementById('downloadHTMLBtn').addEventListener('click', downloadFullHTML);
+            document.getElementById('downloadHTML').addEventListener('click', downloadFullHTML);
+            
+            // 图片查看器关闭按钮
+            document.getElementById('closeImageViewer').addEventListener('click', function() {
+                document.getElementById('imageViewer').classList.remove('active');
+            });
+            
+            // 文件上传输入变化事件
+            document.getElementById('imageUploadInput').addEventListener('change', handleImageUpload);
+            
+            // 退出按钮事件
+            document.getElementById('logoutButton').addEventListener('click', logout);
+            
+            // 标签切换功能
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 移除所有按钮的active类
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // 添加当前按钮的active类
+                    button.classList.add('active');
+                    
+                    // 隐藏所有内容
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // 显示对应内容
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    currentTable = tabId;
+                });
+            });
+            
+            // 添加行按钮事件
+            document.getElementById('addChildRow').addEventListener('click', function() {
+                addRow('childHealthBody', 11);
+            });
+            
+            document.getElementById('addMaternalRow').addEventListener('click', function() {
+                addRow('maternalHealthBody', 11);
+            });
+            
+            document.getElementById('addTcmRow').addEventListener('click', function() {
+                addRow('childTcmBody', 11);
+            });
+            
+            // 清空行按钮事件
+            document.getElementById('clearChildRows').addEventListener('click', function() {
+                clearEmptyRows('childHealthBody');
+            });
+            
+            document.getElementById('clearMaternalRows').addEventListener('click', function() {
+                clearEmptyRows('maternalHealthBody');
+            });
+            
+            document.getElementById('clearTcmRows').addEventListener('click', function() {
+                clearEmptyRows('childTcmBody');
+            });
+            
+            // 保存数据按钮
+            document.getElementById('saveData').addEventListener('click', function() {
+                saveAllData();
+                showMessage('数据已保存！', 'success');
+            });
+            
+            // 下载Word文档按钮
+            document.getElementById('downloadWord').addEventListener('click', function() {
+                downloadWordDocument();
+            });
+            
+            // 更新最后同步时间
+            updateLastSyncTime();
+        }
+        
+        // 设置可编辑单元格事件
+        function setupEditableCells() {
+            // 焦点事件
+            document.addEventListener('focusin', function(e) {
+                if (e.target.classList.contains('editable')) {
+                    const cell = e.target;
+                    
+                    // 记录当前编辑的单元格
+                    currentEditingCell = cell;
+                    
+                    // 标记为编辑中
+                    cell.classList.add('editing');
+                }
+            });
+            
+            // 焦点离开事件
+            document.addEventListener('focusout', function(e) {
+                if (e.target.classList.contains('editable')) {
+                    const cell = e.target;
+                    
+                    // 移除编辑中标记
+                    cell.classList.remove('editing');
+                    
+                    // 保存单元格更改
+                    saveCellData(cell);
+                    
+                    // 清除当前编辑单元格记录
+                    if (currentEditingCell === cell) {
+                        currentEditingCell = null;
+                    }
+                }
+            });
+            
+            // 输入事件（实时保存文本）
+            document.addEventListener('input', function(e) {
+                if (e.target.classList.contains('editable')) {
+                    const cell = e.target;
+                    const contentDiv = cell.querySelector('.cell-content');
+                    if (contentDiv && document.activeElement === cell) {
+                        // 保存文本内容
+                        saveCellTextContent(cell);
+                    }
+                }
+            });
+            
+            // 粘贴事件（支持粘贴图片）
+            document.addEventListener('paste', function(e) {
+                if (e.target.classList.contains('editable') && currentEditingCell === e.target) {
+                    const cell = e.target;
+                    
+                    // 检查剪贴板中是否有图片
+                    const items = e.clipboardData.items;
+                    for (let i = 0; i < items.length; i++) {
+                        if (items[i].type.indexOf('image') !== -1) {
+                            e.preventDefault();
+                            const blob = items[i].getAsFile();
+                            processImageFromBlob(blob, cell);
+                            break;
+                        }
+                    }
+                }
+            });
+            
+            // 移动端长按事件（上传图片）
+            document.addEventListener('touchstart', function(e) {
+                if (e.target.classList.contains('editable')) {
+                    const cell = e.target;
+                    let timer;
+                    
+                    timer = setTimeout(() => {
+                        // 长按触发图片上传
+                        openImageUpload(cell);
+                    }, 800);
+                    
+                    const touchEndHandler = function() {
+                        clearTimeout(timer);
+                        document.removeEventListener('touchend', touchEndHandler);
+                    };
+                    
+                    document.addEventListener('touchend', touchEndHandler);
+                }
+            });
+        }
+        
+        // 加入协作编辑
+        function joinCollaboration() {
+            const userNameInput = document.getElementById('userNameInput').value.trim();
+            
+            if (!userNameInput) {
+                alert('请输入您的姓名');
+                return;
+            }
+            
+            userName = userNameInput;
+            
+            // 生成用户ID
+            userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+            
+            // 显示主界面
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('mainContainer').style.display = 'block';
+            
+            // 更新用户界面
+            document.getElementById('userNameDisplay').textContent = userName;
+            document.getElementById('userAvatar').textContent = userName.charAt(0).toUpperCase();
+            document.getElementById('userStatus').textContent = isOnlineMode ? '在线' : '离线';
+            
+            // 设置用户头像颜色
+            const colors = ['#2c80c5', '#4CAF50', '#FF9800', '#9C27B0', '#F44336'];
+            const colorIndex = userId.length % colors.length;
+            document.getElementById('userAvatar').style.backgroundColor = colors[colorIndex];
+            
+            // 更新URL，便于分享
+            const newUrl = window.location.origin + window.location.pathname + '?user=' + encodeURIComponent(userName);
+            window.history.pushState({path: newUrl}, '', newUrl);
+            
+            // 显示欢迎消息
+            showMessage('欢迎 ' + userName + '！您可以开始编辑表格了。', 'success');
+        }
+        
+        // 退出登录
+        function logout() {
+            if (confirm('确定要退出吗？')) {
+                // 返回登录界面
+                document.getElementById('loginModal').classList.add('active');
+                document.getElementById('mainContainer').style.display = 'none';
+                
+                // 重置用户信息
+                currentUser = null;
+                userId = null;
+                userName = null;
+            }
+        }
+        
+        // 打开图片上传
+        function openImageUpload(cell) {
+            if (!cell.classList.contains('editing')) {
+                // 如果单元格不在编辑状态，先聚焦
+                cell.focus();
+                setTimeout(() => {
+                    openImageUpload(cell);
+                }, 100);
+                return;
+            }
+            
+            // 触发文件选择
+            document.getElementById('imageUploadInput').click();
+            
+            // 保存当前单元格引用
+            currentEditingCell = cell;
+        }
+        
+        // 处理图片上传
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file || !currentEditingCell) return;
+            
+            // 检查文件类型
+            if (!file.type.match('image.*')) {
+                showMessage('请选择图片文件', 'error');
+                return;
+            }
+            
+            // 检查文件大小（限制为5MB）
+            if (file.size > 5 * 1024 * 1024) {
+                showMessage('图片大小不能超过5MB', 'error');
+                return;
+            }
+            
+            // 处理图片
+            processImageFile(file, currentEditingCell);
+            
+            // 清空文件输入
+            e.target.value = '';
+        }
+        
+        // 处理图片文件
+        function processImageFile(file, cell) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                addImageToCell(cell, imageData);
+                showMessage('图片已添加到单元格', 'success');
+            };
+            
+            reader.onerror = function() {
+                showMessage('图片读取失败', 'error');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        // 从Blob处理图片
+        function processImageFromBlob(blob, cell) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                addImageToCell(cell, imageData);
+                showMessage('图片已粘贴到单元格', 'success');
+            };
+            
+            reader.onerror = function() {
+                showMessage('图片处理失败', 'error');
+            };
+            
+            reader.readAsDataURL(blob);
+        }
+        
+        // 添加图片到单元格
+        function addImageToCell(cell, imageData) {
+            const contentDiv = cell.querySelector('.cell-content');
+            if (!contentDiv) return;
+            
+            // 生成唯一ID用于本地存储
+            const imageId = 'img_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            
+            // 保存到本地存储
+            saveImageToLocalStorage(imageId, imageData);
+            
+            // 创建图片元素
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            
+            const img = document.createElement('img');
+            img.className = 'cell-image';
+            img.src = imageData;
+            img.alt = '上传的图片';
+            img.setAttribute('data-image-id', imageId);
+            img.addEventListener('click', function() {
+                openImageViewer(imageData);
+            });
+            
+            const removeBtn = document.createElement('div');
+            removeBtn.className = 'image-remove';
+            removeBtn.innerHTML = '×';
+            removeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                removeImageFromCell(cell, imageId);
+            });
+            
+            imageContainer.appendChild(img);
+            imageContainer.appendChild(removeBtn);
+            
+            // 添加到单元格
+            contentDiv.appendChild(imageContainer);
+            
+            // 保存单元格数据
+            saveCellData(cell);
+        }
+        
+        // 从单元格移除图片
+        function removeImageFromCell(cell, imageId) {
+            const contentDiv = cell.querySelector('.cell-content');
+            if (!contentDiv) return;
+            
+            // 移除图片元素
+            const imgElement = contentDiv.querySelector(`img[data-image-id="${imageId}"]`);
+            if (imgElement && imgElement.parentNode) {
+                imgElement.parentNode.remove();
+            }
+            
+            // 从本地存储移除
+            removeImageFromLocalStorage(imageId);
+            
+            // 保存单元格数据
+            saveCellData(cell);
+            
+            showMessage('图片已移除', 'info');
+        }
+        
+        // 打开图片查看器
+        function openImageViewer(imageData) {
+            document.getElementById('viewerImage').src = imageData;
+            document.getElementById('imageViewer').classList.add('active');
+        }
+        
+        // 保存图片到本地存储
+        function saveImageToLocalStorage(imageId, imageData) {
+            try {
+                localStorage.setItem('img_' + imageId, imageData);
+                localImages.set(imageId, imageData);
+            } catch (e) {
+                console.error('保存图片到本地存储失败:', e);
+                showMessage('本地存储空间不足，无法保存更多图片', 'error');
+            }
+        }
+        
+        // 从本地存储移除图片
+        function removeImageFromLocalStorage(imageId) {
+            try {
+                localStorage.removeItem('img_' + imageId);
+                localImages.delete(imageId);
+            } catch (e) {
+                console.error('从本地存储移除图片失败:', e);
+            }
+        }
+        
+        // 加载本地存储的图片
+        function loadLocalImages() {
+            try {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.startsWith('img_')) {
+                        const imageId = key.substring(4);
+                        const imageData = localStorage.getItem(key);
+                        localImages.set(imageId, imageData);
+                    }
+                }
+                console.log('已加载 ' + localImages.size + ' 张本地图片');
+            } catch (e) {
+                console.error('加载本地图片失败:', e);
+            }
+        }
+        
+        // 保存单元格文本内容
+        function saveCellTextContent(cell) {
+            const row = cell.getAttribute('data-row');
+            const col = cell.getAttribute('data-col');
+            const contentDiv = cell.querySelector('.cell-content');
+            if (!contentDiv) return;
+            
+            // 获取文本内容（排除图片）
+            let textContent = '';
+            for (let node of contentDiv.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    textContent += node.textContent;
+                } else if (node.nodeName === 'SPAN') {
+                    textContent += node.textContent;
+                } else if (node.nodeName === 'DIV' && node.classList.contains('image-container')) {
+                    // 跳过图片容器
+                    continue;
+                }
+            }
+            
+            textContent = textContent.trim();
+            
+            // 保存到本地存储
+            saveCellDataToLocalStorage(cell, textContent);
+        }
+        
+        // 保存单元格数据到本地存储
+        function saveCellDataToLocalStorage(cell, textContent) {
+            const row = cell.getAttribute('data-row');
+            const col = cell.getAttribute('data-col');
+            const tableId = getTableIdFromCell(cell);
+            
+            if (!tableId) return;
+            
+            // 获取现有图片ID
+            const imageIds = [];
+            const imageElements = cell.querySelectorAll('.cell-image');
+            imageElements.forEach(img => {
+                const imageId = img.getAttribute('data-image-id');
+                if (imageId) imageIds.push(imageId);
+            });
+            
+            // 创建单元格数据对象
+            const cellData = {
+                text: textContent,
+                images: imageIds
+            };
+            
+            // 保存到本地存储
+            try {
+                const key = `${tableId}_${row}_${col}`;
+                localStorage.setItem(key, JSON.stringify(cellData));
+            } catch (e) {
+                console.error('保存单元格数据失败:', e);
+            }
+        }
+        
+        // 保存单元格数据
+        function saveCellData(cell) {
+            const contentDiv = cell.querySelector('.cell-content');
+            if (!contentDiv) return;
+            
+            // 获取文本内容
+            let textContent = '';
+            for (let node of contentDiv.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    textContent += node.textContent;
+                } else if (node.nodeName === 'SPAN') {
+                    textContent += node.textContent;
+                }
+            }
+            
+            textContent = textContent.trim();
+            
+            // 保存到本地存储
+            saveCellDataToLocalStorage(cell, textContent);
+        }
+        
+        // 根据单元格获取表格ID
+        function getTableIdFromCell(cell) {
+            if (cell.closest('#childHealthBody')) {
+                return 'childHealth';
+            } else if (cell.closest('#maternalHealthBody')) {
+                return 'maternalHealth';
+            } else if (cell.closest('#childTcmBody')) {
+                return 'childTcm';
+            }
+            return null;
+        }
+        
+        // 保存所有数据
+        function saveAllData() {
+            // 保存儿童健康体检表格
+            saveTableData('childHealthBody', 'childHealth');
+            
+            // 保存孕产妇健康管理表格
+            saveTableData('maternalHealthBody', 'maternalHealth');
+            
+            // 保存儿童中医药管理表格
+            saveTableData('childTcmBody', 'childTcm');
+            
+            showMessage('所有数据已保存到本地存储！', 'success');
+            updateLastSyncTime();
+        }
+        
+        // 保存表格数据
+        function saveTableData(tableBodyId, tableId) {
+            const tbody = document.getElementById(tableBodyId);
+            const rows = tbody.querySelectorAll('tr');
+            
+            rows.forEach((row, rowIndex) => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, colIndex) => {
+                    saveCellData(cell);
+                });
+            });
+        }
+        
+        // 添加新行
+        function addRow(tableBodyId, columns) {
+            const tbody = document.getElementById(tableBodyId);
+            const newRow = document.createElement('tr');
+            const rowIndex = tbody.children.length;
+            
+            for (let i = 0; i < columns; i++) {
+                const cell = document.createElement('td');
+                cell.className = 'editable';
+                cell.setAttribute('contenteditable', 'true');
+                cell.setAttribute('data-row', rowIndex);
+                cell.setAttribute('data-col', i);
+                
+                // 创建单元格内容容器
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'cell-content';
+                cell.appendChild(contentDiv);
+                
+                // 添加图片上传按钮
+                const uploadBtn = document.createElement('button');
+                uploadBtn.className = 'image-upload-btn';
+                uploadBtn.innerHTML = '📷';
+                uploadBtn.title = '上传图片';
+                uploadBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openImageUpload(cell);
+                });
+                cell.appendChild(uploadBtn);
+                
+                newRow.appendChild(cell);
+            }
+            
+            tbody.appendChild(newRow);
+            
+            // 显示提示
+            showMessage('已添加新行，可以开始编辑内容。', 'info');
+        }
+        
+        // 清空表格中的空行
+        function clearEmptyRows(tableBodyId) {
+            const tbody = document.getElementById(tableBodyId);
+            const rows = tbody.querySelectorAll('tr');
+            let removedCount = 0;
+            
+            // 从最后一行开始检查，跳过第一行（标题行）
+            for (let i = rows.length - 1; i > 0; i--) {
+                const row = rows[i];
+                const cells = row.querySelectorAll('td');
+                let isEmpty = true;
+                
+                cells.forEach(cell => {
+                    const contentDiv = cell.querySelector('.cell-content');
+                    if (contentDiv) {
+                        const text = contentDiv.textContent.trim();
+                        const hasImages = contentDiv.querySelectorAll('.image-container').length > 0;
+                        
+                        if (text !== '' || hasImages) {
+                            isEmpty = false;
+                        }
+                    }
+                });
+                
+                if (isEmpty) {
+                    tbody.removeChild(row);
+                    removedCount++;
+                }
+            }
+            
+            // 显示提示
+            if (removedCount > 0) {
+                showMessage(`已清除${removedCount}个空行。`, 'info');
+            } else {
+                showMessage('没有找到空行。', 'info');
+            }
+        }
+        
+        // 更新最后同步时间
+        function updateLastSyncTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('zh-CN', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('lastSyncTime').textContent = timeString;
+        }
+        
+        // 打开分享模态框
+        function openShareModal() {
+            document.getElementById('shareModal').classList.add('active');
+            
+            // 生成分享链接
+            const shareLink = window.location.origin + window.location.pathname + '?user=' + encodeURIComponent(userName || '新用户');
+            document.getElementById('shareLink').value = shareLink;
+            
+            // 生成二维码
+            generateQRCode(shareLink);
+        }
+        
+        // 生成二维码
+        function generateQRCode(text) {
+            const canvas = document.getElementById('qrcodeCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 清空画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 简单二维码生成
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // 绘制边框
+            ctx.fillStyle = '#2c80c5';
+            ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+            
+            // 绘制文本
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('扫码加入协作', canvas.width / 2, 40);
+            
+            // 绘制二维码占位
+            ctx.fillStyle = 'white';
+            ctx.fillRect(50, 60, 100, 100);
+            
+            ctx.fillStyle = '#2c80c5';
+            ctx.font = '12px Arial';
+            ctx.fillText('二维码', canvas.width / 2, 120);
+            
+            ctx.fillStyle = 'white';
+            ctx.font = '10px Arial';
+            ctx.fillText('中仙村健康管理', canvas.width / 2, 180);
+        }
+        
+        // 复制分享链接
+        function copyShareLink() {
+            const shareLinkInput = document.getElementById('shareLink');
+            shareLinkInput.select();
+            shareLinkInput.setSelectionRange(0, 99999);
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showMessage('链接已复制到剪贴板', 'success');
+                } else {
+                    navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+                        showMessage('链接已复制到剪贴板', 'success');
+                    }).catch(err => {
+                        showMessage('复制失败，请手动复制链接', 'error');
+                    });
+                }
+            } catch (err) {
+                navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+                    showMessage('链接已复制到剪贴板', 'success');
+                }).catch(err => {
+                    showMessage('复制失败，请手动复制链接', 'error');
+                });
+            }
+        }
+        
+        // 分享到微信
+        function shareToWechat() {
+            const shareLink = document.getElementById('shareLink').value;
+            const title = '中仙村0~6岁儿童、孕产妇健康管理协作编辑';
+            const desc = '邀请您一起编辑中仙村健康管理表格，支持多人同时编辑和图片上传';
+            
+            // 使用Web Share API（如果支持）
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: desc,
+                    url: shareLink
+                })
+                .then(() => showMessage('分享成功！', 'success'))
+                .catch((error) => {
+                    showMessage('请点击右上角菜单，选择"发送给朋友"或"分享到朋友圈"', 'info');
+                });
+            } else {
+                showMessage('请点击右上角菜单，选择"发送给朋友"或"分享到朋友圈"', 'info');
+            }
+        }
+        
+        // 下载完整HTML文件
+        function downloadFullHTML() {
+            // 获取当前页面的HTML内容
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // 创建下载
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `中仙村健康管理协作系统_${new Date().toISOString().slice(0,10)}.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showMessage('完整HTML文件下载开始！', 'success');
+        }
+        
+        // 下载Word文档
+        function downloadWordDocument() {
+            // 获取表格数据
+            const childHealthData = getTableData('childHealthBody');
+            const maternalHealthData = getTableData('maternalHealthBody');
+            const childTcmData = getTableData('childTcmBody');
+            
+            // 构建Word文档内容
+            let wordContent = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>中仙村0~6岁儿童、孕产妇健康管理服务一览表</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: center; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        .title { text-align: center; font-size: 24px; font-weight: bold; margin: 30px 0; }
+        .section-title { font-size: 20px; font-weight: bold; margin: 25px 0 15px 0; }
+        .notes { margin-top: 40px; padding: 15px; border-left: 4px solid #333; }
+        .cell-image { max-width: 150px; max-height: 100px; margin: 5px; }
+        .page-break { page-break-after: always; }
+    </style>
+</head>
+<body>
+    <div class="title">中仙村0~6岁儿童、孕产妇健康管理服务一览表</div>
+    
+    <div class="section-title">0~6岁儿童健康管理服务（健康体检）</div>
+    <table>
+        <tr>
+            <th>管理对象</th>
+            <th>服务项目</th>
+            <th>第1次</th>
+            <th>第2次</th>
+            <th>第3次</th>
+            <th>第4次</th>
+            <th>第5次</th>
+            <th>第6次</th>
+            <th>第7次</th>
+            <th>第8次</th>
+            <th>第9次</th>
+        </tr>`;
+            
+            // 添加儿童健康体检数据
+            for (let row = 0; row < childHealthData.rows; row++) {
+                wordContent += '<tr>';
+                for (let col = 0; col < childHealthData.cols; col++) {
+                    const cellKey = `${row}_${col}`;
+                    const cellData = childHealthData.cells[cellKey] || { text: '', images: [] };
+                    
+                    wordContent += '<td>';
+                    if (cellData.text) {
+                        wordContent += cellData.text;
+                    }
+                    
+                    if (cellData.images && Array.isArray(cellData.images)) {
+                        cellData.images.forEach(imgUrl => {
+                            wordContent += `<br><img src="${imgUrl}" class="cell-image" alt="图片">`;
+                        });
+                    }
+                    wordContent += '</td>';
+                }
+                wordContent += '</tr>';
+            }
+            
+            wordContent += `
+    </table>
+    
+    <div class="section-title">孕产妇健康管理服务</div>
+    <table>
+        <tr>
+            <th>管理对象</th>
+            <th>服务项目</th>
+            <th>第1次</th>
+            <th>第2次</th>
+            <th>第3次</th>
+            <th>第4次</th>
+            <th>第5次</th>
+            <th>第6次</th>
+            <th>第7次</th>
+            <th>第8次</th>
+            <th>第9次</th>
+        </tr>`;
+            
+            // 添加孕产妇健康管理数据
+            for (let row = 0; row < maternalHealthData.rows; row++) {
+                wordContent += '<tr>';
+                for (let col = 0; col < maternalHealthData.cols; col++) {
+                    const cellKey = `${row}_${col}`;
+                    const cellData = maternalHealthData.cells[cellKey] || { text: '', images: [] };
+                    
+                    wordContent += '<td>';
+                    if (cellData.text) {
+                        wordContent += cellData.text;
+                    }
+                    
+                    if (cellData.images && Array.isArray(cellData.images)) {
+                        cellData.images.forEach(imgUrl => {
+                            wordContent += `<br><img src="${imgUrl}" class="cell-image" alt="图片">`;
+                        });
+                    }
+                    wordContent += '</td>';
+                }
+                wordContent += '</tr>';
+            }
+            
+            wordContent += `
+    </table>
+    
+    <div class="section-title">0~6岁儿童健康管理服务（中医药健康管理）</div>
+    <table>
+        <tr>
+            <th>管理对象</th>
+            <th>服务项目</th>
+            <th>第1次</th>
+            <th>第2次</th>
+            <th>第3次</th>
+            <th>第4次</th>
+            <th>第5次</th>
+            <th>第6次</th>
+            <th>第7次</th>
+            <th>第8次</th>
+            <th>第9次</th>
+        </tr>`;
+            
+            // 添加儿童中医药管理数据
+            for (let row = 0; row < childTcmData.rows; row++) {
+                wordContent += '<tr>';
+                for (let col = 0; col < childTcmData.cols; col++) {
+                    const cellKey = `${row}_${col}`;
+                    const cellData = childTcmData.cells[cellKey] || { text: '', images: [] };
+                    
+                    wordContent += '<td>';
+                    if (cellData.text) {
+                        wordContent += cellData.text;
+                    }
+                    
+                    if (cellData.images && Array.isArray(cellData.images)) {
+                        cellData.images.forEach(imgUrl => {
+                            wordContent += `<br><img src="${imgUrl}" class="cell-image" alt="图片">`;
+                        });
+                    }
+                    wordContent += '</td>';
+                }
+                wordContent += '</tr>';
+            }
+            
+            wordContent += `
+    </table>
+    
+    <div class="notes">
+        <h3>备注说明：</h3>
+        <ol>
+            <li>本表格适用于0~6岁儿童及孕产妇健康管理服务时间安排参考。</li>
+            <li>儿童健康体检共9次，从出生1周内至36月龄；中医药健康管理共6次，从6月龄至36月龄。</li>
+            <li>孕产妇健康管理共9次，从孕13周前至产后42天。</li>
+            <li>"---"表示该时间段无相应服务项目。</li>
+            <li>本表格生成时间：${new Date().toLocaleString('zh-CN')}</li>
+            <li>协作编辑用户：${userName || '未知用户'}</li>
+        </ol>
+    </div>
+</body>
+</html>`;
+            
+            // 创建下载
+            const blob = new Blob([wordContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `中仙村健康管理服务表格_${new Date().toISOString().slice(0,10)}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showMessage('Word文档下载开始！', 'success');
+        }
+        
+        // 获取表格数据
+        function getTableData(tableBodyId) {
+            const tbody = document.getElementById(tableBodyId);
+            const rows = tbody.querySelectorAll('tr');
+            const data = {
+                rows: rows.length,
+                cols: rows.length > 0 ? rows[0].querySelectorAll('td').length : 11,
+                cells: {}
+            };
+            
+            rows.forEach((row, rowIndex) => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, colIndex) => {
+                    const cellKey = `${rowIndex}_${colIndex}`;
+                    const contentDiv = cell.querySelector('.cell-content');
+                    
+                    if (contentDiv) {
+                        // 获取文本内容
+                        let textContent = '';
+                        const textNodes = [];
+                        
+                        for (let node of contentDiv.childNodes) {
+                            if (node.nodeType === Node.TEXT_NODE) {
+                                textNodes.push(node);
+                            } else if (node.nodeName === 'SPAN') {
+                                textNodes.push(node);
+                            }
+                        }
+                        
+                        textNodes.forEach(node => {
+                            textContent += node.textContent;
+                        });
+                        
+                        textContent = textContent.trim();
+                        
+                        // 获取图片URL
+                        const images = [];
+                        const imageElements = contentDiv.querySelectorAll('.image-container img');
+                        imageElements.forEach(img => {
+                            if (img.src) images.push(img.src);
+                        });
+                        
+                        // 创建单元格数据对象
+                        data.cells[cellKey] = {
+                            text: textContent,
+                            images: images
+                        };
+                    }
+                });
+            });
+            
+            return data;
+        }
+        
+        // 显示消息提示
+        function showMessage(message, type = 'info') {
+            // 移除现有提示
+            const existingMsg = document.querySelector('.message-popup');
+            if (existingMsg) {
+                existingMsg.remove();
+            }
+            
+            // 创建新提示
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message-popup';
+            msgDiv.textContent = message;
+            
+            // 样式
+            msgDiv.style.position = 'fixed';
+            msgDiv.style.top = '20px';
+            msgDiv.style.right = '20px';
+            msgDiv.style.padding = '15px 20px';
+            msgDiv.style.borderRadius = '8px';
+            msgDiv.style.color = 'white';
+            msgDiv.style.fontWeight = 'bold';
+            msgDiv.style.zIndex = '1000';
+            msgDiv.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            msgDiv.style.maxWidth = '300px';
+            msgDiv.style.transition = 'all 0.3s ease';
+            
+            if (type === 'success') {
+                msgDiv.style.backgroundColor = '#4CAF50';
+            } else if (type === 'error') {
+                msgDiv.style.backgroundColor = '#f44336';
+            } else if (type === 'warning') {
+                msgDiv.style.backgroundColor = '#FF9800';
+            } else {
+                msgDiv.style.backgroundColor = '#2196F3';
+            }
+            
+            document.body.appendChild(msgDiv);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                msgDiv.style.opacity = '0';
+                msgDiv.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    if (msgDiv.parentNode) {
+                        msgDiv.parentNode.removeChild(msgDiv);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+
+<div class="message-popup" style="position: fixed; top: 20px; right: 20px; padding: 15px 20px; border-radius: 8px; color: white; font-weight: bold; z-index: 1000; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px; max-width: 300px; transition: 0.3s; background-color: rgb(76, 175, 80);">欢迎 池毓波！您可以开始编辑表格了。</div></body></html>
